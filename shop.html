@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Medical Shop — Basaveshwar Hospital</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="site-header header-reveal">
+    <div class="container header-inner">
+      <div class="brand"><h1>Basaveshwar Hospital</h1></div>
+
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="active">Medical Shop</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <button class="hamburger" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="shop-page container">
+    <div class="shop-header reveal from-bottom">
+      <h2>In-House Medical Shop</h2>
+      <p>Essential medicines and after-surgery items available — quick, reliable and affordable.</p>
+    </div>
+
+    <div class="shop-layout">
+      <!-- left: list -->
+      <div>
+        <div class="side-card shop-search">
+          <input id="shopSearch" type="search" placeholder="Search medicines, e.g. antibiotic" aria-label="Search medicines">
+          <div class="cart-badge" title="Cart items">Cart: <span id="cartCount">0</span></div>
+        </div>
+
+        <div id="productsContainer" class="shop-list" aria-live="polite">
+          <!-- JS will render product cards here -->
+        </div>
+
+        <div class="side-card" style="margin-top:12px;">
+          <h4>Upload Prescription (optional)</h4>
+          <div class="prescription-input">
+            <input id="prescriptionFile" type="file" accept="image/*,application/pdf" aria-label="Upload prescription">
+            <button class="btn btn-outline" id="uploadBtn" type="button">Upload</button>
+          </div>
+          <div id="prescriptionPreview" class="prescription-preview" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- right: sidebar -->
+      <aside class="shop-side">
+        <div class="side-card reveal from-bottom" data-delay="120">
+          <h4>Opening Hours</h4>
+          <p>Mon–Sun: 8:00 AM – 10:00 PM</p>
+          <p style="margin-top:8px;color:var(--muted)">Emergency medicines available 24×7.</p>
+        </div>
+
+        <div class="side-card reveal from-bottom" data-delay="180">
+          <h4>Need help?</h4>
+          <p>Call for quick assistance and prescription guidance.</p>
+          <p style="margin-top:8px"><a class="call-btn" href="tel:+911234567890">📞 Call +91 12345 67890</a></p>
+        </div>
+
+        <div class="side-card reveal from-bottom" data-delay="240">
+          <h4>Cart Summary</h4>
+          <p class="muted">Items added to cart are stored locally on your device.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer reveal from-bottom" data-delay="320">
+    <div class="container footer-inner">
+      <p>© <span id="year_shop"></span> Basaveshwar Hospital</p>
+    </div>
+  </footer>
+
+  <script>document.getElementById('year_shop').textContent = new Date().getFullYear();</script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

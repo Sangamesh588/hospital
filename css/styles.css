@@ -1,0 +1,1624 @@
+/* styles.css — Basaveshwar Hospital (Professionally Enhanced by Gemini) */
+
+/* ========= Root variables ========= */
+:root {
+  --orange: #f7893b;
+  --orange-2: #ebbb5a;
+  --dark: #0b2b4a;
+  --muted: #6b6b6b;
+  --panel-bg: rgba(8, 26, 48, 0.88);
+  --panel-accent: rgba(255, 255, 255, 0.08);
+  --white: #ffffff;
+  --max-width: 1300px;
+  
+  /* ✨ Added for consistent, professional animations */
+  --transition: all 300ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-fast: all 200ms ease;
+
+  font-family: 'Inter var', 'Inter', system-ui, -apple-system, "Segoe UI",
+    Roboto, Arial, sans-serif;
+}
+
+/* ========= Reset / base ========= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ✨ Added smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ========= Header ========= */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-2));
+  display: flex;
+  align-items: center;
+  z-index: 120;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.brand h1 {
+  color: #fff;
+  font-size: 1.15rem;
+  margin-left: 6px;
+  font-weight: 700;
+}
+
+.main-nav {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.main-nav a {
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: var(--transition-fast); /* ✨ Added */
+}
+
+/* ✨ Added hover state */
+.main-nav a:not(.active):hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.main-nav a.active {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.hamburger {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 1.6rem;
+  transition: var(--transition-fast); /* ✨ Added */
+}
+
+/* ✨ Added hover/active */
+.hamburger:hover {
+  opacity: 0.8;
+}
+.hamburger:active {
+  transform: scale(0.9);
+}
+
+/* show hamburger on small screens */
+@media (max-width: 900px) {
+  .main-nav {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+/* ========= HERO ========= */
+/* 🔥 This section now combines the original, "premium," and "fix" styles */
+.hero {
+  position: relative;
+  margin-top: 70px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+/* hero background image (Premium Enhanced) */
+.hero-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: -3 !important; /* Set behind overlays */
+  
+  /* Original styles merged */
+  object-position: right center !important; 
+  will-change: transform;
+  
+  /* Premium blur + brightness */
+  filter: blur(4px) brightness(0.82) saturate(1.15);
+  transform: translateY(0) scale(1.03); /* Base state for animation */
+  
+  /* Fade-in animation */
+  opacity: 0;
+  animation: heroFade 1.4s ease-out forwards;
+}
+
+@keyframes heroFade {
+  0% { opacity: 0; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1.03); }
+}
+
+@media (min-width:1200px) { 
+  .hero-img { 
+    transform: scale(1.02); /* Base state for desktop */
+  }
+  @keyframes heroFade {
+    0% { opacity: 0; transform: scale(1.06); }
+    100% { opacity: 1; transform: scale(1.02); }
+  }
+}
+
+/* DARK + CINEMATIC OVERLAY (keeps text readable) */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.75) 0%,
+      rgba(0, 0, 0, 0.35) 40%,
+      rgba(0, 0, 0, 0.1) 80%
+    ),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.55));
+}
+
+/* SIDE SHADOWS (makes hero look 3D) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(
+      circle at left 20%,
+      rgba(0, 0, 0, 0.35),
+      transparent 60%
+    ),
+    radial-gradient(circle at right 80%, rgba(0, 0, 0, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+/* left translucent panel */
+.hero-panel {
+  position: relative;
+  z-index: 3;
+  width: 62%;
+  padding-left: 30px;
+}
+
+/* Left panel background (premium dark glass) */
+.hero-panel-inner {
+  background: var(--panel-bg);
+  padding: 44px 40px;
+  border-radius: 14px;
+  border: 1px solid var(--panel-accent);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  
+  /* Fix: prevent overflow */
+  max-width: 760px;
+  width: 100%;
+  overflow: hidden;
+  word-wrap: break-word;
+  padding: 28px 32px; /* refined padding */
+}
+
+/* eyebrow / title / subtext */
+.eyebrow {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* Responsive headline (from FIX) */
+.hero-title {
+  color: #fff;
+  font-size: clamp(1.8rem, 5.2vw, 3.6rem) !important;
+  line-height: 1.04 !important;
+  margin: 0 0 12px 0;
+  font-weight: 800;
+  word-break: break-word;
+  white-space: normal;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.hero-sub {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  max-width: 100%;
+  margin-bottom: 18px;
+}
+
+/* CTAs */
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap; /* Fix */
+}
+
+/* info row */
+.hero-info-row {
+  display: flex;
+  gap: 28px;
+  margin-top: 16px;
+  color: #fff;
+  font-weight: 600;
+  flex-wrap: wrap; /* Fix */
+}
+
+.hero-label {
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Bigger hero title on desktop */
+@media (min-width: 1200px) {
+  .hero-title {
+    font-size: 4.6rem !important; /* ensure clamp doesn't override */
+    line-height: 1.1;
+  }
+  .hero-panel {
+    width: 58%;
+  }
+  .hero-right {
+    right: 64px;
+  }
+}
+@media (min-width:1400px){
+  .hero-title{ font-size:4.8rem !important; }
+}
+
+/* ========= RIGHT VISIT DAYS BOX ========= */
+.hero-right {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-end;
+  /* Fix: prevent overlap */
+  margin-left: 28px; 
+  flex: 0 0 360px;
+}
+
+/* card */
+.hero-card {
+  background: var(--white);
+  width: 420px;
+  padding: 26px 22px;
+  border-radius: 18px;
+  box-shadow: 0 22px 60px rgba(2, 10, 28, 0.16);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: var(--transition); /* ✨ Added */
+}
+/* ✨ Added hover */
+.hero-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 24px 65px rgba(2, 10, 28, 0.2);
+}
+
+.hero-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  color: var(--dark);
+}
+.hero-card ul {
+  padding-left: 18px;
+  margin: 0 0 12px 0;
+  color: #333;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.hero-card li {
+  margin-bottom: 6px;
+}
+.hero-card .btn.small {
+  background: var(--dark);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+/* mini thumbnails */
+.hero-mini-grid {
+  display: flex;
+  gap: 12px;
+}
+.hero-mini-grid img {
+  width: 120px;
+  height: 85px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+@media (min-width:1400px){
+  .hero-card{ width:460px; padding:30px; }
+  .hero-mini-grid img{ width:140px; height:96px; }
+}
+
+
+/* ========= Global Interactive Elements (Buttons/Links/Inputs) ========= */
+/* ✨ This new section adds professional polish to all interactive items */
+
+.btn {
+  border: 0;
+  border-radius: 40px;
+  padding: 12px 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
+  text-decoration: none; /* Ensure links styled as buttons work */
+  display: inline-block; /* Consistency */
+}
+
+/* Universal hover/active states */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Specific button types */
+.btn-primary {
+  background: #fff;
+  color: var(--dark);
+}
+.btn-primary:hover {
+  background: #f1f1f1;
+  color: var(--dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+/* Global Form Input Styles */
+input[type='number'],
+input[type='text'],
+input[type='email'],
+input[type='tel'],
+select,
+textarea {
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+/* Theme-consistent focus */
+input[type='number']:focus,
+input[type='text']:focus,
+input[type='email']:focus,
+input[type='tel']:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--orange) !important; /* Use !important to override specifics */
+  outline: 3px solid rgba(255, 122, 26, 0.18) !important;
+  outline-offset: 3px;
+}
+/* ====================================================================== */
+
+
+/* ========= FEATURES / STEPS / QUICK LINKS ========= */
+.features {
+  display: flex;
+  gap: 16px;
+  margin: 36px auto;
+  padding: 18px;
+  background: #fff6f2;
+  border-radius: 12px;
+}
+.feature {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  transition: var(--transition); /* ✨ Added */
+}
+/* ✨ Added hover */
+.feature:hover {
+  background: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.feature-icon {
+  font-size: 1.6rem;
+  margin-bottom: 8px;
+}
+
+.steps-section {
+  padding: 22px 0;
+}
+.section-title {
+  text-align: center;
+  font-size: 1.9rem;
+  margin-bottom: 14px;
+}
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.step-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+  transition: var(--transition); /* ✨ Added */
+}
+/* ✨ Added hover */
+.step-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.step-number {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--orange);
+}
+
+/* quick links */
+.quick-links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 12px;
+}
+.ql-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: var(--transition); /* ✨ Added */
+}
+/* ✨ Added hover */
+.ql-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* info bar */
+.info-bar {
+  background: var(--orange);
+  color: #fff;
+  padding: 16px 0;
+  margin-top: 18px;
+}
+.info-bar-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* footer */
+.site-footer {
+  background: #fff;
+  padding: 14px 0;
+  border-top: 1px solid #f3f3f3;
+  margin-top: 18px;
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ========= APPOINTMENT / FORM STYLES for other pages ========= */
+.form-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  margin-top: 18px;
+}
+.form-card label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+}
+.form-card input,
+.form-card select,
+.form-card textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 8px;
+  border: 1px solid #e9e9e9;
+  /* ✨ Focus styles handled by global rules */
+}
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+/* ========= Responsiveness ========= */
+@media (max-width: 1199px) {
+  .hero-card {
+    width: 360px;
+    right: 30px;
+  }
+  .hero-mini-grid img {
+    width: 100px;
+    height: 70px;
+  }
+}
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+    padding: 26px 0;
+    min-height: auto;
+  }
+  .hero-img {
+    object-position: center 40%;
+    filter: blur(2px) brightness(0.6); /* ✨ Adjusted blur for mobile */
+  }
+  .hero-panel {
+    width: 100%;
+    padding-left: 0;
+  }
+  .hero-panel-inner {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  }
+  .hero-right {
+    position: relative;
+    right: 0;
+    top: 0;
+    transform: none;
+    margin-top: 18px;
+    align-items: flex-start;
+    width: 100%;
+    margin-left: 0; /* Fix */
+    flex: 1 1 auto; /* Fix */
+  }
+  .hero-card {
+    width: 100%;
+    max-width: 640px;
+  }
+  .hero-mini-grid img {
+    width: 84px;
+    height: 56px;
+  }
+  .main-nav {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+    color: #fff;
+  }
+}
+
+/* Accessibility focus (Global) */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(255, 122, 26, 0.18);
+  outline-offset: 3px;
+}
+/* =========================
+   Entrance + Reveal Animations
+   ========================= */
+
+/* base hidden state for reveal */
+.reveal {
+  opacity: 0;
+  /* ✨ Refined: add a slight scale for a smoother "pop" */
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 500ms cubic-bezier(0.1, 0.8, 0.2, 1),
+    transform 500ms cubic-bezier(0.1, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+/* different directions (optional) */
+.reveal.from-top {
+  transform: translateY(-24px) scale(0.98);
+}
+.reveal.from-left {
+  transform: translateX(-28px) scale(0.98);
+}
+.reveal.from-right {
+  transform: translateX(28px) scale(0.98);
+}
+.reveal.from-bottom {
+  transform: translateY(28px) scale(0.98);
+}
+
+/* when element becomes visible */
+.reveal.in-view {
+  opacity: 1;
+  /* ✨ Refined: ensure all transforms reset to normal */
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+/* quick scale for cards (now redundant but harmless) */
+.reveal.scale {
+  transform: translateY(18px) scale(0.985);
+}
+.reveal.scale.in-view {
+  transform: translateY(0) scale(1);
+}
+
+/* stagger helper (JS will set inline style --delay) */
+.reveal[data-delay] {
+  transition-delay: var(--r-delay, 0ms);
+}
+
+/* subtle fly-in for header */
+.header-reveal {
+  opacity: 0;
+  transform: translateY(-18px);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+.header-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* subtle zoom for hero image (Handled by heroFade keyframes now) */
+.hero-img-reveal {
+  /* This class is still used by JS, but animation is in .hero-img */
+  transition: none; /* Prevent conflict */
+}
+
+/* accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .header-reveal,
+  .hero-img, /* Target hero image directly */
+  .doc-modal-content { /* Target modal */
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}
+/* === Ambulance page styles === */
+
+/* Ambulance page container niceties */
+.ambulance-hero {
+  margin-top: 96px; /* ensure below fixed header */
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 28px;
+  align-items: start;
+  padding: 22px 0;
+}
+
+@media (max-width: 900px) {
+  .ambulance-hero {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding: 14px 0;
+    margin-top: 84px;
+  }
+}
+
+/* Emergency card (left) */
+.ambulance-card {
+  background: linear-gradient(180deg, #fff, #fffefc);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 14px 40px rgba(11, 43, 74, 0.08);
+  border: 1px solid rgba(11, 43, 74, 0.04);
+  transition: var(--transition); /* ✨ Added */
+}
+/* ✨ Added hover */
+.ambulance-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 45px rgba(11, 43, 74, 0.12);
+}
+
+/* prominent call button */
+.call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-2));
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 1.03rem;
+  box-shadow: 0 12px 28px rgba(255, 122, 26, 0.12);
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+/* ✨ Added hover */
+.call-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(255, 122, 26, 0.2);
+}
+.call-btn:active {
+  transform: translateY(1px); /* More subtle than global .btn */
+  box-shadow: 0 8px 20px rgba(255, 122, 26, 0.1);
+}
+.call-btn:focus {
+  outline: 3px solid rgba(255, 122, 26, 0.18);
+  outline-offset: 3px;
+}
+
+/* secondary outline action */
+.call-outline {
+  background: transparent;
+  border: 2px solid rgba(11, 43, 74, 0.06);
+  padding: 10px 14px;
+  border-radius: 10px;
+  transition: var(--transition-fast); /* ✨ Added */
+}
+/* ✨ Added hover */
+.call-outline:hover {
+  background: rgba(11,43,74,0.04);
+  border-color: rgba(11,43,74,0.1);
+}
+
+/* Map container with lazy-load placeholder */
+.map-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  height: 320px;
+  background: linear-gradient(180deg, #f6f6f8, #efefef);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+.map-placeholder {
+  text-align: center;
+  color: var(--muted);
+  padding: 12px;
+}
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* right column (quick info) */
+.ambulance-side {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.ambulance-side .info-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  transition: var(--transition); /* ✨ Added */
+}
+/* ✨ Added hover */
+.ambulance-side .info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
+}
+.ambulance-side h4 {
+  margin: 0 0 8px 0;
+}
+
+/* floating call button on mobile */
+.fab-call {
+  display: none;
+  position: fixed;
+  right: 18px;
+  bottom: 20px;
+  z-index: 1200;
+  background: linear-gradient(90deg, var(--orange), var(--orange-2));
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 999px;
+  box-shadow: 0 18px 50px rgba(255, 122, 26, 0.14);
+  font-weight: 800;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: var(--transition); /* ✨ Added */
+}
+/* ✨ Added hover */
+.fab-call:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 55px rgba(255, 122, 26, 0.2);
+}
+.fab-call:active {
+  transform: scale(0.98);
+}
+@media (max-width: 900px) {
+  .fab-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+/* small toast / feedback */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 90px;
+  background: rgba(11, 43, 74, 0.95);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  z-index: 1300;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  /* ✨ Refined animation: add transform */
+  transform: translateX(-50%) translateY(10px);
+  transition: opacity 280ms ease, bottom 280ms ease, transform 280ms ease;
+}
+.toast.show {
+  opacity: 1;
+  bottom: 110px;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0); /* ✨ Refined */
+}
+/* ============================================================
+   DOCTORS PAGE — card grid, hover, modal preview
+   ============================================================ */
+/* 🔥 Cleaned: Removed duplicate section */
+
+.doctors-page {
+  padding-top: 110px;
+  padding-bottom: 40px;
+}
+
+.doctors-header {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.doctors-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 6px;
+}
+
+.doctors-header p {
+  color: var(--muted);
+}
+
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.doc-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  transition: var(--transition); /* ✨ Corrected: uses root variable */
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.doc-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+.doc-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.doc-body {
+  padding: 14px 16px;
+}
+
+.doc-body h3 {
+  margin: 0 0 6px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.doc-special {
+  color: var(--orange);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.doc-days {
+  color: var(--muted);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+}
+
+.doc-body .btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* Doctors expanded modal */
+.doc-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  z-index: 1400;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.doc-modal.open {
+  display: flex;
+  opacity: 1;
+}
+
+.doc-modal-content {
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  max-width: 450px;
+  width: 100%;
+  position: relative;
+  animation: fadeUp 0.35s ease forwards;
+}
+
+/* ✨ Refined: add scale for a nicer "pop" */
+@keyframes fadeUp {
+  from {
+    transform: translateY(30px) scale(0.98);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.doc-modal h3 {
+  margin-top: 0;
+}
+
+.doc-modal-close {
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  font-size: 20px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition-fast); /* ✨ Added */
+}
+/* ✨ Added hover */
+.doc-modal-close:hover {
+  transform: rotate(90deg);
+  color: var(--orange);
+}
+
+/* Image inside modal */
+.doc-modal img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+/* ======================================================
+   BMI PAGE — styles
+   ====================================================== */
+
+.bmi-page {
+  padding-top: 110px;
+  padding-bottom: 40px;
+}
+
+.bmi-card {
+  max-width: 760px;
+  margin: 18px auto;
+  background: linear-gradient(180deg, #fff, #fffefc);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 14px 40px rgba(11, 43, 74, 0.06);
+  border: 1px solid rgba(11, 43, 74, 0.04);
+  transition: var(--transition); /* ✨ Added */
+}
+/* ✨ Added hover */
+.bmi-card:hover {
+  box-shadow: 0 18px 45px rgba(11, 43, 74, 0.08);
+}
+
+
+.bmi-row {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 18px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .bmi-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* inputs */
+.bmi-card label {
+  display: block;
+  margin-top: 12px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.bmi-card input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e9e9e9;
+  font-size: 1rem;
+  /* ✨ Focus handled by global rules */
+}
+
+/* buttons */
+.bmi-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.bmi-actions .btn {
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-weight: 800;
+  /* ✨ Hover/active handled by global .btn rules */
+}
+
+/* result area (right column) */
+.bmi-result {
+  background: linear-gradient(180deg, #fff, #fff);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* animated number */
+.bmi-value {
+  font-size: 2.4rem;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+}
+.bmi-category {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+/* color pills */
+.bmi-pill {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  color: #fff;
+}
+.bmi-under {
+  background: #2b8bd1;
+} /* underweight — blue */
+.bmi-normal {
+  background: #2aa34a;
+} /* normal — green */
+.bmi-over {
+  background: #ff7a1a;
+} /* overweight — orange */
+.bmi-obese {
+  background: #d64545;
+} /* obese — red */
+
+/* small helpers */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  cursor: pointer;
+  transition: var(--transition-fast); /* ✨ Added */
+}
+/* ✨ Added hover */
+.copy-btn:hover {
+  background: #f5f5f5;
+  border-color: rgba(0,0,0,0.1);
+}
+.copy-msg {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* subtle in-view reveal (re-uses reveal classes) */
+.bmi-card.reveal {
+  will-change: opacity, transform;
+}
+
+/* print-friendly */
+@media print {
+  .site-header,
+  .hamburger {
+    display: none;
+  }
+  .bmi-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+/* ============================================================
+   MEDICAL SHOP — styles
+   ============================================================ */
+
+.shop-page {
+  padding-top: 110px;
+  padding-bottom: 50px;
+}
+
+.shop-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.shop-header h2 {
+  font-size: 2.1rem;
+  margin-bottom: 6px;
+}
+.shop-header p {
+  color: var(--muted);
+}
+
+.shop-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .shop-layout {
+    grid-template-columns: 1fr;
+    padding: 0 12px;
+  }
+}
+
+/* Product list card */
+.shop-list {
+  display: grid;
+  gap: 12px;
+}
+.product-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  transition: var(--transition); /* ✨ Corrected: uses root variable */
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08); /* ✨ Added hover shadow */
+}
+.product-thumb {
+  width: 96px;
+  height: 76px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.product-info h4 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+}
+.product-info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.product-actions {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+/* price */
+.product-price {
+  font-weight: 800;
+  color: var(--dark);
+}
+
+/* side bar */
+.shop-side {
+  position: sticky;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.side-card {
+  background: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* search */
+.shop-search {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.shop-search input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e9e9e9;
+  /* ✨ Focus handled by global rules */
+}
+
+/* upload */
+.prescription-input {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 8px;
+}
+.prescription-preview {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+.prescription-preview img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* cart badge */
+.cart-badge {
+  background: #fff;
+  color: var(--dark);
+  padding: 6px 10px;
+  border-radius: 999px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  font-weight: 800;
+  transition: var(--transition-fast); /* ✨ Added */
+}
+/* ✨ Added hover */
+.cart-badge:hover {
+  transform: scale(1.05);
+}
+
+/* empty state */
+.empty-note {
+  color: var(--muted);
+  text-align: center;
+  padding: 18px 12px;
+}
+
+/* small responsive tweaks */
+@media (max-width: 520px) {
+  .product-thumb {
+    width: 72px;
+    height: 64px;
+  }
+  .shop-side {
+    position: relative;
+    top: auto;
+  }
+}
+/* ============================================================
+   CONTACT PAGE — styles
+   ============================================================ */
+/* 🔥 Cleaned: Removed duplicate/conflicting section from end of file */
+
+.contact-page {
+  padding-top: 110px;
+  padding-bottom: 50px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px; /* Kept this layout */
+  gap: 22px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    padding: 0 12px;
+  }
+}
+
+/* contact card */
+.contact-card {
+  background: linear-gradient(180deg, #fff, #fffefc);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 14px 40px rgba(11, 43, 74, 0.06);
+  border: 1px solid rgba(11, 43, 74, 0.04);
+}
+
+/* form */
+.contact-card label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 700;
+  color: var(--dark);
+}
+.contact-card input,
+.contact-card textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #e9e9e9;
+  margin-top: 6px;
+  /* ✨ Focus handled by global rules */
+}
+.contact-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* right aside */
+.contact-side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: sticky;
+  top: 90px;
+}
+.side-contact {
+  background: #fff;
+  padding: 14px;
+  border-radius: 12px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* copy address */
+.copy-address {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #fff;
+  cursor: pointer;
+  transition: var(--transition-fast); /* ✨ Added */
+}
+/* ✨ Added hover */
+.copy-address:hover {
+  background: #f5f5f5;
+  border-color: rgba(0,0,0,0.1);
+}
+
+/* map */
+.contact-map {
+  height: 300px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #f7f7f9, #efefef);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* small note */
+.muted.small {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* success / error messages */
+.form-msg {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-weight: 700;
+  display: inline-block;
+  /* ✨ Animate it in! */
+  animation: fadeUp 0.4s ease forwards;
+}
+.form-msg.success {
+  background: #ecf9ef;
+  color: #1a6b2d;
+  border: 1px solid rgba(26, 107, 45, 0.08);
+}
+.form-msg.error {
+  background: #fff3f3;
+  color: #7a1616;
+  border: 1px solid rgba(122, 22, 22, 0.06);
+}
+
+/* small responsive */
+@media (max-width: 520px) {
+  .contact-side {
+    position: relative;
+    top: auto;
+  }
+}
+/* ============================================================
+   END OF PROFESSIONALLY ENHANCED STYLESHEET
+   ============================================================ *//* ============================================================
+   MOBILE MENU STYLES (Add to end of styles.css)
+   ============================================================ */
+
+/* The main overlay */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 5000; /* Must be on top of everything */
+  
+  /* Use the hero panel's "glass" background */
+  background: var(--panel-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* Center the links */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Hide by default */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+/* The close button (top right) */
+.mobile-menu-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: 0;
+  color: var(--white);
+  font-size: 2.8rem;
+  line-height: 1;
+  font-weight: 300;
+  cursor: pointer;
+  padding: 10px;
+  transition: transform 200ms ease, color 200ms ease;
+}
+.mobile-menu-close:hover {
+  transform: rotate(90deg);
+  color: var(--orange);
+}
+
+/* The navigation links container */
+.mobile-nav {
+  text-align: center;
+}
+
+/* Individual links */
+.mobile-nav a {
+  display: block;
+  color: var(--white);
+  font-size: 1.6rem; /* Big, easy-to-tap links */
+  font-weight: 700;
+  padding: 16px 0;
+  text-decoration: none;
+
+  /* Animation: links fly in */
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 300ms ease, transform 300ms ease;
+  transition-delay: 0ms;
+}
+
+/* The primary "Appointment" button */
+.mobile-nav .btn-mobile-cta {
+  background: var(--orange);
+  color: var(--white);
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+.mobile-nav .btn-mobile-cta:hover {
+  background: var(--orange-2);
+  transform: scale(1.05); /* Added hover from global btn styles */
+}
+
+/* =============================================
+  The "OPEN" state (toggled by JavaScript)
+  =============================================
+*/
+
+/* 1. Show the menu */
+body.nav-open .mobile-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* 2. Stop the page from scrolling underneath */
+body.nav-open {
+  overflow: hidden;
+}
+
+/* 3. Animate the links in (staggered) */
+body.nav-open .mobile-nav a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delay for each link */
+body.nav-open .mobile-nav a:nth-child(1) { transition-delay: 100ms; }
+body.nav-open .mobile-nav a:nth-child(2) { transition-delay: 150ms; }
+body.nav-open .mobile-nav a:nth-child(3) { transition-delay: 200ms; }
+body.nav-open .mobile-nav a:nth-child(4) { transition-delay: 250ms; }
+body.nav-open .mobile-nav a:nth-child(5) { transition-delay: 300ms; }
+body.nav-open .mobile-nav a:nth-child(6) { transition-delay: 350ms; }
+body.nav-open .mobile-nav a:nth-child(7) { transition-delay: 400ms; }

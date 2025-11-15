@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Dr. Gunderao | Piles & Fistula Specialist | Basaveshwar Hospital Hulsoor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Profile of Dr. Gunderao, Piles & Fistula Specialist at Basaveshwar Hospital, Hulsoor. Expert care for anorectal conditions." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#0b72b9;
+      --primary-dark:#075589;
+      --accent:#f4b41a;
+      --bg:#f5f7fb;
+      --text:#222;
+      --muted:#666;
+      --card-bg:#ffffff;
+      --border-radius-lg:18px;
+      --shadow-soft:0 18px 40px rgba(15,23,42,0.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;}
+    body{background:var(--bg);color:var(--text);line-height:1.6;}
+    a{text-decoration:none;color:inherit;}
+
+    .top-bar{
+      background:#fff;border-bottom:1px solid #e5e7eb;padding:10px 18px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:50;
+    }
+    .back-btn{border:1px solid #d1d5db;border-radius:999px;padding:6px 14px;font-size:14px;display:inline-flex;align-items:center;gap:6px;cursor:pointer;background:#f9fafb;}
+    .back-btn:hover{background:#eef2ff;transform:translateY(-1px);}
+    .hospital-name{font-weight:600;font-size:15px;color:var(--primary-dark);}
+    .location-tag{font-size:12px;color:var(--muted);margin-left:auto;}
+
+    .page{max-width:1100px;margin:18px auto 32px;padding:0 16px;}
+    .hero{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:26px;align-items:stretch;margin-bottom:26px;}
+
+    .doc-card-main{background:linear-gradient(135deg,#ffffff,#eff6ff);border-radius:24px;box-shadow:var(--shadow-soft);padding:22px 20px;display:flex;flex-direction:column;align-items:center;text-align:center;}
+    .doc-photo-wrap{width:170px;height:170px;border-radius:999px;overflow:hidden;border:4px solid rgba(11,114,185,0.16);margin-bottom:16px;background:#e5e7eb;}
+    .doc-photo-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+    .doc-name{font-size:24px;font-weight:700;margin-bottom:4px;}
+    .doc-special{font-size:15px;color:var(--primary-dark);font-weight:500;margin-bottom:6px;}
+    .doc-qual{font-size:13px;color:var(--muted);margin-bottom:12px;}
+
+    .chip-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px;}
+    .chip{font-size:12px;padding:5px 11px;border-radius:999px;background:rgba(11,114,185,0.08);color:var(--primary-dark);}
+
+    .timing-box{width:100%;border-radius:14px;background:#ffffffaa;padding:10px 12px;border:1px dashed #cbd5f5;margin-top:4px;font-size:13px;text-align:left;}
+    .timing-row{display:flex;justify-content:space-between;margin-bottom:3px;}
+
+    .btn-primary{margin-top:16px;padding:9px 20px;border-radius:999px;border:none;cursor:pointer;background:var(--primary);color:#fff;font-size:14px;font-weight:500;display:inline-flex;align-items:center;gap:6px;box-shadow:0 12px 24px rgba(11,114,185,0.35);}
+    .btn-primary:hover{background:var(--primary-dark);transform:translateY(-1px);}
+
+    .hero-info{display:flex;flex-direction:column;gap:14px;}
+    .badge{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;background:#ecfdf5;color:#166534;font-size:12px;gap:6px;width:fit-content;}
+    .hero-title{font-size:24px;font-weight:700;margin-bottom:4px;}
+    .hero-sub{font-size:14px;color:var(--muted);}
+
+    .hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-top:12px;}
+    .pill-card{background:var(--card-bg);border-radius:16px;padding:10px 12px;font-size:13px;border:1px solid #e5e7eb;}
+    .pill-title{font-weight:600;margin-bottom:3px;}
+    .pill-list{font-size:12px;color:var(--muted);}
+
+    .section{margin-top:18px;}
+    .section-title{font-size:18px;font-weight:700;margin-bottom:8px;display:inline-flex;align-items:center;gap:8px;}
+    .section-subtitle{font-size:13px;color:var(--muted);margin-bottom:10px;}
+
+/* cards */
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;}
+    .card{background:var(--card-bg);border-radius:var(--border-radius-lg);padding:14px 14px 12px;box-shadow:0 10px 24px rgba(15,23,42,0.06);border:1px solid #e5e7eb;}
+    .card h3{font-size:15px;margin-bottom:6px;}
+    .card ul{list-style:none;padding-left:0;font-size:13px;color:var(--muted);}
+    .card ul li{margin-bottom:4px;padding-left:14px;position:relative;}
+    .card ul li::before{content:"•";position:absolute;left:0;top:1px;color:var(--primary);font-size:15px;}
+
+    .two-col{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,0.9fr);gap:16px;margin-top:10px;}
+    .highlight-box{background:#fefce8;border-radius:14px;padding:10px 12px;border:1px solid #fbbf24;font-size:13px;}
+    .info-list{font-size:13px;color:var(--muted);padding-left:16px;margin-top:4px;}
+    .info-list li{margin-bottom:4px;}
+    .contact-box{background:#ecfdf5;border-radius:16px;padding:12px 14px;border:1px solid #bbf7d0;font-size:13px;}
+    .contact-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;}
+    .contact-label{font-weight:600;font-size:13px;}
+    .contact-value{font-size:13px;}
+    .footer-note{margin-top:22px;font-size:12px;color:var(--muted);text-align:center;}
+
+    @media (max-width:768px){
+      .hero{grid-template-columns:minmax(0,1fr);}
+      .doc-card-main{order:1;}
+      .hero-info{order:0;}
+      .two-col{grid-template-columns:minmax(0,1fr);}
+      .page{margin-top:12px;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <button class="back-btn" onclick="history.back()">← Back</button>
+    <div class="hospital-name">Basaveshwar Hospital</div>
+    <div class="location-tag">Hulsoor, Karnataka</div>
+  </div>
+
+  <main class="page">
+    <section class="hero">
+      <!-- Left: main doctor card -->
+      <div class="doc-card-main">
+        <div class="doc-photo-wrap">
+          <!-- change path if your image is different -->
+          <img src="images\dr-gunderao.png" alt="Dr. Gunderao - Piles & Fistula Specialist">
+        </div>
+        <div class="doc-name">Dr. Gunderao</div>
+        <div class="doc-special">Piles &amp; Fistula Specialist</div>
+        <div class="doc-qual">MBBS, MS (General Surgery)</div>
+
+        <div class="chip-row">
+          <div class="chip">Anal Fistula Repair</div>
+          <div class="chip">Laser Piles Treatment</div>
+          <div class="chip">Minimally Invasive</div>
+        </div>
+
+        <div class="timing-box">
+          <div class="timing-row"><span><strong>OPD Days</strong></span><span>Tue, Thu &amp; Sat</span></div>
+          <div class="timing-row"><span><strong>Timings</strong></span><span>11:00 am – 2:00 pm</span></div>
+          <div class="timing-row"><span><strong>Location</strong></span><span>Basaveshwar Hospital, Hulsoor</span></div>
+        </div>
+
+        <!-- <a class="btn-primary" href="appointment.html">Book Appointment</a> -->
+      </div>
+
+      <!-- Right: overview -->
+      <div class="hero-info">
+        <div class="badge">✅ Consultant Surgeon</div>
+        <h1 class="hero-title">Experienced in anorectal surgery & laser treatment</h1>
+        <p class="hero-sub">Dr. Gunderao focuses on modern, low-pain treatments for piles, fistula and fissure with fast recovery and strong emphasis on patient privacy.</p>
+
+        <div class="hero-grid">
+          <div class="pill-card"><div class="pill-title">Experience</div><div class="pill-list">10+ years surgical practice</div></div>
+          <div class="pill-card"><div class="pill-title">Key Skills</div><div class="pill-list">Laser, Minimal Access &amp; Proctology</div></div>
+          <div class="pill-card"><div class="pill-title">Approach</div><div class="pill-list">Patient-first, evidence based</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Conditions -->
+    <section class="section">
+      <h2 class="section-title">Conditions Treated</h2>
+      <p class="section-subtitle">Comprehensive management of anorectal diseases.</p>
+      <div class="card-grid">
+        <div class="card"><h3>Piles (Hemorrhoids)</h3><ul><li>Bleeding, pain &amp; swelling</li><li>Internal &amp; external piles management</li></ul></div>
+        <div class="card"><h3>Anal Fistula</h3><ul><li>Pus discharge &amp; recurrent infection</li><li>Surgical repair &amp; seton/laser options</li></ul></div>
+        <div class="card"><h3>Anal Fissure</h3><ul><li>Severe pain during stools</li><li>Conservative &amp; surgical care</li></ul></div>
+        <div class="card"><h3>Other</h3><ul><li>Pilonidal sinus, perianal abscess</li><li>Post-op care &amp; rehabilitation</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Treatment Approach</h2>
+      <div class="two-col">
+        <div class="card"><h3>Non-surgical</h3><ul><li>Diet &amp; lifestyle guidance</li><li>Topical &amp; oral meds</li></ul></div>
+        <div class="card"><h3>Surgical &amp; Laser</h3><ul><li>Laser fissure &amp; piles</li><li>Minimally invasive fistula repair</li></ul></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">When to Consult</h2>
+      <div class="highlight-box">Don't delay—early consultation prevents complications.</div>
+      <ul class="info-list"><li>Bleeding during stools</li><li>Persistent anal pain</li><li>Discharge or lumps near anus</li></ul>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">OPD Timings &amp; Contact</h2>
+      <div class="two-col">
+        <div class="contact-box">
+          <div class="contact-row"><span class="contact-label">Hospital</span><span class="contact-value">Basaveshwar Hospital, Hulsoor</span></div>
+          <div class="contact-row"><span class="contact-label">OPD Days</span><span class="contact-value">Tue, Thu &amp; Sat</span></div>
+          <div class="contact-row"><span class="contact-label">Timings</span><span class="contact-value">11:00 am – 2:00 pm</span></div>
+        </div>
+        <div class="card"><h3>Prepare for Visit</h3><ul><li>Bring reports</li><li>List current meds</li></ul></div>
+      </div>
+    </section>
+
+    <p class="footer-note">Disclaimer: This page provides information and does not replace medical consultation. Verify timings before visiting.</p>
+  </main>
+</body>
+</html>

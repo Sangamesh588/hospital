@@ -1,0 +1,635 @@
+/* home.css — hero background homepage (orange theme) */
+:root {
+  --orange: #ff7a1a;
+  --dark: #2b2b2b;
+  --muted: #6b6b6b;
+  --card: #fff6f1;
+  /* -- UPGRADE -- Added transition variable */
+  --transition: all 0.3s ease;
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+}
+
+/* Base */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: var(--dark);
+  /* -- UPGRADE -- Better font smoothing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* -- UPGRADE -- Class for locking scroll when modal/nav is open */
+body.nav-open,
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 64px;
+  background: linear-gradient(90deg, var(--orange), #ffa65a);
+  color: #fff;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  border-radius: 6px;
+}
+
+.brand-text {
+  font-weight: 700;
+}
+
+.nav {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.nav a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  /* -- UPGRADE -- */
+  transition: var(--transition);
+}
+
+.nav a.active,
+.nav a:hover {
+  /* -- UPGRADE -- Combined hover with active */
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================================= */
+/* 📱 -- UPGRADE -- HAMBURGER & MOBILE NAV STYLES            */
+/* ========================================================= */
+
+.hamburger {
+  display: none; /* Hidden on desktop */
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  cursor: pointer;
+  z-index: 102;
+  padding: 0;
+  line-height: 1;
+}
+
+/* ========================================================= */
+/* HERO (Full Background Image + Fallback IMG)               */
+/* ========================================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: 60px 0 60px 0;
+  color: #fff;
+  background-color: #111; /* fallback color */
+}
+
+/* fallback <img> */
+.hero-img {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  z-index: -2 !important;
+  display: block !important;
+}
+
+/* overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* -- UPGRADE -- Better gradient for left-aligned text */
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: -1;
+}
+
+/* Remove previous background-image so <img> takes full control */
+.hero {
+  background-image: none !important;
+}
+
+/* hero content */
+.hero-content {
+  position: relative;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 48px 0;
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+/* Left side text */
+.hero-left {
+  flex: 1;
+  max-width: 720px;
+  /* -- UPGRADE -- Animation */
+  animation: slideInUp 0.7s ease-out;
+}
+
+.hero-left h1,
+.hero-left h2 {
+  font-size: 2.6rem;
+  margin: 0 0 8px 0;
+  line-height: 1.05;
+}
+
+.lead,
+.hero-text {
+  margin: 0 0 18px 0;
+  opacity: 0.95;
+  font-size: 1.05rem;
+}
+
+.cta-row,
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+  border: 0;
+  /* -- UPGRADE -- */
+  transition: var(--transition);
+}
+
+/* -- UPGRADE -- Hover and Focus states */
+.btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--orange);
+  outline-offset: 2px;
+}
+
+/* button types */
+.btn-primary {
+  background: var(--dark);
+  color: #fff;
+}
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.18);
+}
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+.btn-light {
+  background: rgba(255, 255, 255, 0.20);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+.btn-outline-light {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+/* quick info */
+.quick-info {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  gap: 16px;
+  font-weight: 600;
+}
+
+.quick-info a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* hero right column */
+.hero-right {
+  width: 320px;
+  /* -- UPGRADE -- Animation */
+  animation: slideInUp 0.7s ease-out 0.2s;
+  animation-fill-mode: backwards; /* Starts in "off-screen" state */
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  color: var(--dark);
+  /* -- UPGRADE -- */
+  transition: var(--transition);
+}
+
+/* -- UPGRADE -- */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.3);
+}
+
+.feature-doctor img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 12px;
+}
+
+.card-body h3 {
+  margin: 0 0 6px 0;
+}
+
+.card-body .muted {
+  color: var(--muted);
+  margin: 0 0 12px 0;
+}
+
+.card .btn.small {
+  padding: 8px 10px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+}
+
+/* mini gallery */
+.mini-gallery,
+.hero-mini-grid {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.mini-gallery img,
+.hero-mini-grid img {
+  width: 140px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  /* -- UPGRADE -- */
+  transition: var(--transition);
+}
+
+/* -- UPGRADE -- */
+.mini-gallery img:hover,
+.hero-mini-grid img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+/* ========================================================= */
+/* FEATURES ROW                                                */
+/* ========================================================= */
+
+.features {
+  display: flex;
+  gap: 16px;
+  margin: 22px 0;
+  padding: 18px;
+  background: #fff6f2;
+  border-radius: 12px;
+}
+
+.features .feature {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  /* -- UPGRADE -- */
+  transition: var(--transition);
+}
+
+/* -- UPGRADE -- */
+.features .feature:hover {
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transform: translateY(-3px);
+}
+
+.features h4 {
+  margin: 0 0 8px 0;
+}
+
+/* ========================================================= */
+/* FOOTER                                                      */
+/* ========================================================= */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  color: var(--muted);
+}
+
+/* ========================================================= */
+/* MODAL                                                        */
+/* ========================================================= */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  /* -- UPGRADE -- Use opacity/visibility for transitions */
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  z-index: 1000;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal[aria-hidden="false"] {
+  /* -- UPGRADE -- */
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  color: var(--dark);
+  /* -- UPGRADE -- */
+  transform: scale(0.9);
+  transition: var(--transition);
+}
+
+/* -- UPGRADE -- Modal scale-in effect */
+.modal[aria-hidden="false"] .modal-card {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  border: 0;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.modal-card h3 {
+  margin: 0 0 6px 0;
+}
+
+.modal-card label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.modal-card input,
+.modal-card select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  margin-top: 6px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+/* ========================================================= */
+/* 🎨 -- UPGRADE -- ANIMATIONS                                 */
+/* ========================================================= */
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================================= */
+/* RESPONSIVE                                                  */
+/* ========================================================= */
+
+@media (max-width: 900px) {
+  .hero-content {
+    flex-direction: column;
+  }
+
+  .hero-right {
+    width: 100%;
+  }
+
+  .mini-gallery img,
+  .hero-mini-grid img {
+    width: 88px;
+    height: 56px;
+  }
+
+  /* -- UPGRADE -- Mobile Nav Styles */
+  .nav {
+    display: none;
+    /* Full-screen menu */
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--dark);
+    z-index: 101;
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+  }
+  .nav.mobile-menu {
+    display: flex; /* Show when this class is added */
+  }
+  body.nav-open .nav.mobile-menu {
+    transform: translateY(0);
+  }
+  .nav.mobile-menu a {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  .hamburger {
+    display: block; /* Show hamburger */
+  }
+  body.nav-open .hamburger {
+    color: white; /* Make sure 'X' is visible */
+  }
+
+  .hero {
+    min-height: 62vh;
+    padding: 22px 0 36px 0;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+}
+
+/* -- UPGRADE -- Consolidated 1024px queries */
+@media (min-width: 1024px) {
+
+  /* ===== Desktop Hero Left Big Size ===== */
+  .hero-left h1,
+  .hero-left h2 {
+    font-size: 3.2rem !important;
+    line-height: 1.1 !important;
+  }
+
+  .hero-text,
+  .lead {
+    font-size: 1.25rem !important;
+    max-width: 700px !important;
+  }
+
+  .hero-buttons .btn {
+    padding: 14px 24px !important;
+    font-size: 1.05rem !important;
+    border-radius: 12px !important;
+  }
+
+  .hero-info {
+    font-size: 1.05rem !important;
+    gap: 32px !important;
+  }
+
+  /* ===== Bigger Visit Days Card on Desktop ===== */
+  .hero-right {
+    width: 420px !important;
+  }
+
+  .hero-card {
+    padding: 24px !important;
+    border-radius: 18px !important;
+    font-size: 1.1rem !important;
+  }
+
+  .hero-card h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  .hero-card ul li {
+    font-size: 1.05rem !important;
+    margin-bottom: 6px;
+  }
+
+  .hero-card .btn.small {
+    padding: 12px 16px !important;
+    font-size: 1.05rem !important;
+    border-radius: 10px !important;
+  }
+
+  .hero-content {
+    gap: 60px !important;
+    /* increase spacing */
+    padding-top: 80px !important;
+  }
+}
+
+/* -- UPGRADE -- Small mobile fix */
+@media (max-width: 480px) {
+  .hero-left h1,
+  .hero-left h2 {
+    font-size: 2.1rem; /* Smaller for tiny screens */
+  }
+
+  .hero-buttons {
+    flex-direction: column; /* Stack buttons */
+  }
+}
+
+/* -- Extra polish: focus accessibility & print styles -- */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(255, 122, 26, 0.18);
+  outline-offset: 3px;
+}
+
+/* Print-friendly */
+@media print {
+  .site-header,
+  .hamburger,
+  .nav,
+  .modal {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}

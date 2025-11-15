@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Book Appointment — Basaveshwar Hospital</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header small">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>Basaveshwar Hospital</h1>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="doctors.html">Doctors</a>
+        <a href="appointment.html" class="active">Appointment</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="container">
+    <h2>Book an Appointment</h2>
+    <p>Please fill the form — our staff will call to confirm your time slot.</p>
+
+    <form id="appointmentForm" class="form-card">
+
+      <label for="fullname">Full Name</label>
+      <input id="fullname" name="fullname" type="text" required placeholder="Your full name">
+
+      <label for="age">Age</label>
+      <input id="age" name="age" type="number" min="0" max="120" required>
+
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">Select</option>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+
+      <label for="phone">Phone Number</label>
+      <input id="phone" name="phone" type="tel" required placeholder="+91 …">
+
+      <label for="email">Email <span class="optional">(optional)</span></label>
+      <input id="email" name="email" type="email" placeholder="example@mail.com">
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" rows="2" placeholder="Village / Area / Landmark"></textarea>
+
+      <label for="complaint">Complaint / Symptoms</label>
+      <textarea id="complaint" name="complaint" rows="3" required placeholder="Describe your symptoms…"></textarea>
+
+      <label for="doctor">Preferred Doctor</label>
+      <select id="doctor" name="doctor">
+        <option value="">Any Available</option>
+        <option>Dr. Ramesh</option>
+        <option>Dr. Anita</option>
+        <option>Dr. Suresh</option>
+      </select>
+
+      <label for="date">Preferred Date</label>
+      <input id="date" name="date" type="date" required>
+
+      <label for="file">Upload Reports (optional)</label>
+      <input id="file" name="file" type="file" accept="image/*,application/pdf">
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Send Request</button>
+        <button class="btn btn-outline" type="reset">Clear</button>
+      </div>
+
+      <p id="formMsg" class="muted small"></p>
+    </form>
+
+    <section class="how-it-works">
+      <h3>How it Works</h3>
+      <ol>
+        <li>Fill the form and submit.</li>
+        <li>We’ll call you to confirm appointment time.</li>
+        <li>Bring ID & old reports on the visit day.</li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year3"></span> Basaveshwar Hospital</p>
+    </div>
+  </footer>
+<script>
+const baseUrl = 'http://127.0.0.1:5000/api';
+
+function toISODate(dateStr){
+  // dateStr expected "YYYY-MM-DD" (from input[type=date])
+  if(!dateStr) return null;
+  // create date at local midnight and convert to ISO
+  const d = new Date(dateStr + 'T00:00:00');
+  return d.toISOString();
+}
+
+async function submitPatientForm(e){
+  e.preventDefault();
+  const fullname = document.getElementById('fullname').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  if(!fullname || !phone) {
+    document.getElementById('formMsg').textContent = 'Name and phone are required';
+    document.getElementById('formMsg').style.color = 'red';
+    return;
+  }
+
+  const fd = new FormData();
+  fd.append('fullname', fullname);
+  fd.append('phone', phone);
+  fd.append('email', document.getElementById('email').value.trim());
+  fd.append('age', document.getElementById('age').value);
+  fd.append('gender', document.getElementById('gender').value);
+  fd.append('address', document.getElementById('address').value.trim());
+  fd.append('complaint', document.getElementById('complaint').value.trim());
+  fd.append('doctor', document.getElementById('doctor').value);
+  const dateVal = document.getElementById('date').value;
+  if(dateVal) fd.append('date', toISODate(dateVal)); // send ISO date
+
+  const fileInput = document.getElementById('file');
+  if (fileInput && fileInput.files[0]) fd.append('file', fileInput.files[0]);
+
+  try {
+    const res = await fetch(baseUrl + '/patients', { method: 'POST', body: fd });
+    const data = await res.json();
+    const msgEl = document.getElementById('formMsg');
+    if (res.ok) {
+      // redirect to success page
+      window.location.href = 'success.html?id=' + data.patient._id;
+    } else {
+      msgEl.textContent = data.message || JSON.stringify(data);
+      msgEl.style.color = 'red';
+    }
+  } catch(err){
+    console.error(err);
+    const msgEl = document.getElementById('formMsg');
+    msgEl.textContent = 'Network error: ' + err.message;
+    msgEl.style.color = 'red';
+  }
+}
+
+document.getElementById('appointmentForm').addEventListener('submit', submitPatientForm);
+</script>
+
+
+
+</body>
+</html>

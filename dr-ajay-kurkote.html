@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dr. Ajay Kurkote | Orthopedic Surgeon | Basaveshwar Hospital Hulsoor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    :root {
+      --primary: #0b72b9;
+      --primary-dark: #064b7c;
+      --accent: #f4b41a;
+      --bg: #f5f7fb;
+      --text: #222;
+      --muted: #666;
+      --card-bg: #ffffff;
+      --border-radius-lg: 18px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* Top Bar */
+    .top-bar {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .back-btn {
+      padding: 6px 14px;
+      font-size: 14px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #fafafa;
+      cursor: pointer;
+      transition: .2s;
+    }
+    .back-btn:hover { background: #eef2ff; }
+
+    .hospital-name {
+      font-weight: 700;
+      margin-left: 12px;
+      color: var(--primary-dark);
+    }
+
+    .location-tag {
+      margin-left: auto;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* Main page */
+    .page {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+
+    /* HERO GRID */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+      gap: 26px;
+      margin-bottom: 26px;
+    }
+
+    /* Doctor Card */
+    .doc-card-main {
+      background: linear-gradient(135deg, #ffffff, #eff6ff);
+      border-radius: 24px;
+      padding: 24px;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .doc-photo-wrap {
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 0 auto 14px;
+      border: 4px solid rgba(11,114,185,0.18);
+    }
+
+    .doc-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .doc-name {
+      font-size: 26px;
+      font-weight: 700;
+    }
+
+    .doc-special {
+      color: var(--primary-dark);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .doc-qual {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .chip-row { display: flex; gap: 8px; flex-wrap: wrap; justify-content:center; margin-bottom: 16px; }
+
+    .chip {
+      background: rgba(11,114,185,0.14);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--primary-dark);
+    }
+
+    .timing-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 12px;
+      border: 1px dashed #b6cff5;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .timing-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .btn-primary {
+      margin-top: 16px;
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 15px;
+      cursor: pointer;
+      border: none;
+      transition: .2s;
+      box-shadow: 0 10px 22px rgba(11,114,185,0.28);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    /* Right Side */
+    .badge {
+      background: #e8fff3;
+      padding: 5px 12px;
+      color: #166534;
+      border-radius: 999px;
+      width: fit-content;
+      font-size: 13px;
+    }
+    .hero-title { font-size: 26px; font-weight: 700; margin-top: 10px; }
+    .hero-sub { color: var(--muted); margin-bottom: 12px; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .pill-card {
+      background: var(--card-bg);
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid #e5e7eb;
+      font-size: 13px;
+    }
+
+    /* Sections */
+    .section { margin-top: 30px; }
+    .section-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .section-subtitle { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 16px;
+      border-radius: var(--border-radius-lg);
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+    }
+
+    .card h3 { margin-bottom: 6px; }
+
+    .card ul { list-style: none; padding-left: 14px; color: var(--muted); }
+    .card ul li { margin-bottom: 4px; position: relative; }
+    .card ul li::before {
+      content: "•";
+      position: absolute;
+      left: -12px;
+      color: var(--primary);
+    }
+
+    .info-list { padding-left: 16px; }
+    .info-list li { margin-bottom: 5px; }
+
+    /* Contact box */
+    .contact-box {
+      background: #e8fff3;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid #baf7d5;
+      margin-top: 14px;
+    }
+
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    .footer-note {
+      margin-top: 22px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media(max-width:768px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <button class="back-btn" onclick="history.back()">← Back</button>
+    <div class="hospital-name">Basaveshwar Hospital</div>
+    <div class="location-tag">Hulsoor, Karnataka</div>
+  </div>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <!-- LEFT SIDE -->
+      <div class="doc-card-main">
+        <div class="doc-photo-wrap">
+          <img src="images\dr_ajay_kurkote.png" alt="Dr Ajay Kurkote">
+        </div>
+
+        <div class="doc-name">Dr. Ajay Kurkote</div>
+        <div class="doc-special">Orthopedic Surgeon</div>
+        <div class="doc-qual">MS Ortho — Consulting Orthopedic Surgeon</div>
+
+        <div class="chip-row">
+          <div class="chip">Joint Pain Treatment</div>
+          <div class="chip">Fracture Care</div>
+          <div class="chip">Sports Injuries</div>
+        </div>
+
+        <div class="timing-box">
+          <div class="timing-row">
+            <strong>Visiting Day</strong>
+            <span>Every Wednesday</span>
+          </div>
+          <div class="timing-row">
+            <strong>Timings</strong>
+            <span>3 PM – 5 PM</span>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="location.href='appointment.html'">
+          Book Appointment
+        </button>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="hero-info">
+        <div class="badge">🏥 Visiting Orthopedic Consultant</div>
+
+        <h1 class="hero-title">Expert in Bone, Joint & Spine Treatment</h1>
+
+        <p class="hero-sub">
+          Dr. Ajay Kurkote is a highly experienced orthopedic surgeon specializing in fractures,
+          joint disorders, arthritis, ligament injuries and sports injuries.
+        </p>
+
+        <div class="hero-grid">
+          <div class="pill-card">
+            <strong>Experience</strong><br>
+            10+ years in Orthopedics
+          </div>
+          <div class="pill-card">
+            <strong>Special Focus</strong><br>
+            Joint pain, fractures, spine disorders
+          </div>
+          <div class="pill-card">
+            <strong>Treatment Approach</strong><br>
+            Non-surgical + surgical methods
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- CONDITIONS -->
+    <section class="section">
+      <h2 class="section-title">Conditions Treated</h2>
+      <div class="section-subtitle">Full orthopedic care for adults & children.</div>
+
+      <div class="card-grid">
+        <div class="card">
+          <h3>Fractures & Injuries</h3>
+          <ul>
+            <li>Accident injuries</li>
+            <li>Sports fractures</li>
+            <li>Slip & fall fractures</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Joint Pain & Arthritis</h3>
+          <ul>
+            <li>Knee & hip pain</li>
+            <li>Arthritis management</li>
+            <li>Joint injections</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Spine Disorders</h3>
+          <ul>
+            <li>Back pain</li>
+            <li>Disc problems</li>
+            <li>Posture issues</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Sports Injuries</h3>
+          <ul>
+            <li>Ligament tears</li>
+            <li>Muscle strain</li>
+            <li>Knee injuries</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHEN TO CONSULT -->
+    <section class="section">
+      <h2 class="section-title">When Should You Visit?</h2>
+
+      <ul class="info-list">
+        <li>Joint pain or stiffness</li>
+        <li>Back or spine pain</li>
+        <li>Fractures or swelling</li>
+        <li>Sports injuries</li>
+        <li>Difficulty walking</li>
+      </ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section">
+      <h2 class="section-title">OPD & Contact</h2>
+
+      <div class="contact-box">
+        <div class="contact-row">
+          <span><strong>Hospital</strong></span>
+          <span>Basaveshwar Hospital, Hulsoor</span>
+        </div>
+
+        <div class="contact-row">
+          <strong>Visiting Day</strong>
+          <span>Every Wednesday</span>
+        </div>
+
+        <div class="contact-row">
+          <strong>Timings</strong>
+          <span>3 PM – 5 PM</span>
+        </div>
+
+        <div class="contact-row">
+          <strong>Phone</strong>
+          <span><a href="tel:+919972289953">+91 99722 89953</a></span>
+        </div>
+      </div>
+    </section>
+
+    <p class="footer-note">Please confirm timings before visiting.</p>
+
+  </main>
+
+</body>
+</html>

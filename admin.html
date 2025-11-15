@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Patients — Admin</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Inter,Arial;margin:20px}
+    .wrap{max-width:1100px;margin:0 auto}
+    input.search{padding:8px;width:300px;margin-bottom:12px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:8px;border:1px solid #ddd;text-align:left}
+    th{background:#f4f4f4}
+    tr:hover{background:#fafafa}
+    .small{font-size:12px;color:#666}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h2>Patients (Admin)</h2>
+
+    <input id="q" class="search" placeholder="Search by name / phone / doctor" />
+
+    <table id="tbl">
+      <thead><tr>
+        <th>ID</th><th>Name</th><th>Phone</th><th>Email</th><th>Age</th><th>Doctor</th><th>Date</th><th>Created</th>
+      </tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    const API = 'http://127.0.0.1:5000/api';
+    let patients = [];
+    async function load(){
+      const res = await fetch(API + '/patients');
+      patients = await res.json();
+      render(patients);
+    }
+    function render(list){
+      const tbody = document.querySelector('#tbl tbody');
+      tbody.innerHTML = '';
+      list.forEach(p => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><a href="${API}/patients/${p._id}" target="_blank">${p._id.slice(0,8)}</a></td>
+          <td>${escapeHtml(p.fullname||'')}</td>
+          <td>${escapeHtml(p.phone||'')}</td>
+          <td>${escapeHtml(p.email||'')}</td>
+          <td>${p.age ?? ''}</td>
+          <td>${escapeHtml(p.preferredDoctor||'')}</td>
+          <td>${p.preferredDate ? (new Date(p.preferredDate)).toLocaleString() : ''}</td>
+          <td class="small">${p.createdAt ? (new Date(p.createdAt)).toLocaleString() : ''}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' })[c]); }
+
+    document.getElementById('q').addEventListener('input', (e)=>{
+      const q = e.target.value.trim().toLowerCase();
+      if(!q) return render(patients);
+      render(patients.filter(p=>(
+        (p.fullname||'').toLowerCase().includes(q) ||
+        (p.phone||'').toLowerCase().includes(q) ||
+        (p.preferredDoctor||'').toLowerCase().includes(q)
+      )));
+    });
+
+    load();
+  </script>
+</body>
+</html>

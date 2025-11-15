@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Appointment Received</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:Inter,Arial, sans-serif; display:flex; align-items:center; justify-content:center; min-height:100vh; background:#f7f8fb}
+    .card{background:#fff;padding:28px;border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,0.06);max-width:520px;text-align:center}
+    h1{margin:0 0 8px 0}
+    p{color:#444}
+    a{display:inline-block;margin-top:14px;color:#fff;background:#1d72f3;padding:8px 14px;border-radius:6px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Request received</h1>
+    <p id="msg">Thanks — we got your appointment request.</p>
+    <a id="home" href="index.html">Return to Home</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const id = params.get('id');
+    if (id) {
+      document.getElementById('msg').textContent = 'Your request ID: ' + id + '. Our staff will call to confirm the slot.';
+    }
+  </script>
+</body>
+</html>

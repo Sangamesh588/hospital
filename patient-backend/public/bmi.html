@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BMI Calculator — Basaveshwar Hospital</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header class="site-header header-reveal">
+    <div class="container header-inner">
+      <div class="brand"><h1>Basaveshwar Hospital</h1></div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="bmi.html" class="active">BMI</a>
+        <a href="appointment.html">Appointment</a>
+      </nav>
+      <button class="hamburger" aria-label="Open menu">☰</button>
+    </div>
+  </header>
+
+  <main class="bmi-page container">
+    <h2 class="reveal from-bottom">BMI Calculator</h2>
+    <p class="muted reveal from-bottom" data-delay="60">Check your Body Mass Index and understand your weight category.</p>
+
+    <div class="bmi-card reveal from-bottom" data-delay="120">
+      <div class="bmi-row">
+        <form class="bmi-form" onsubmit="return false;">
+          <label for="bmiHeight">Height (cm)</label>
+          <input id="bmiHeight" type="number" placeholder="e.g. 170" min="30" max="300" step="0.1" required>
+
+          <label for="bmiWeight">Weight (kg)</label>
+          <input id="bmiWeight" type="number" placeholder="e.g. 65" min="2" max="500" step="0.1" required>
+
+          <div class="bmi-actions">
+            <button id="bmiCalcBtn" class="btn btn-primary">Calculate BMI</button>
+            <button id="bmiClearBtn" class="btn btn-outline" type="button">Clear</button>
+            <button id="bmiCopyBtn" class="copy-btn" type="button">Copy result</button>
+          </div>
+        </form>
+
+        <div class="bmi-result" role="status" aria-live="polite">
+          <div style="font-size:0.95rem;color:var(--muted)">Your BMI</div>
+          <div id="bmiValue" class="bmi-value">--</div>
+          <div id="bmiCategory" class="bmi-category" style="color:var(--muted)">Enter height and weight to calculate your BMI.</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="how-it-works reveal from-bottom" data-delay="220">
+      <h3>BMI Categories</h3>
+      <ul style="margin-left:18px;line-height:1.6;">
+        <li><strong>Underweight:</strong> BMI &lt; 18.5</li>
+        <li><strong>Normal weight:</strong> 18.5 – 24.9</li>
+        <li><strong>Overweight:</strong> 25 – 29.9</li>
+        <li><strong>Obesity:</strong> 30 and above</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer reveal from-bottom" data-delay="300">
+    <div class="container footer-inner">
+      <p>© <span id="year6"></span> Basaveshwar Hospital</p>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year6").textContent = new Date().getFullYear();</script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>

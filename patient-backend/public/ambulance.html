@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ambulance Service — Basaveshwar Hospital</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="site-header small">
+  <div class="container header-inner">
+    <div class="brand"><h1>Basaveshwar Hospital</h1></div>
+
+    <nav class="main-nav">
+      <a href="index.html">Home</a>
+      <a href="doctors.html">Doctors</a>
+      <a href="ambulance.html" class="active">Ambulance</a>
+    </nav>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="container" style="padding-top:110px;">
+
+  <h2>Ambulance & Emergency Service</h2>
+  <p>We provide fast and reliable 24×7 ambulance support for emergencies.</p>
+
+  <!-- EMERGENCY CARD -->
+  <div class="form-card" style="margin-top:20px;">
+    <h3 style="margin-bottom:8px;">24×7 Emergency Contact</h3>
+    <p>Call us anytime for emergency support. Our ambulance will reach your location as quickly as possible.</p>
+
+    <a href="tel:+911234567890" class="btn btn-primary" style="margin-top:14px;display:inline-block;">
+      📞 Call +91 12345 67890
+    </a>
+  </div>
+
+  <!-- SERVICE DETAILS -->
+  <section class="how-it-works" style="margin-top:28px;">
+    <h3>Why Choose Our Ambulance Service?</h3>
+    <ul style="margin-left:18px;line-height:1.6;">
+      <li>Available 24 hours a day, 7 days a week</li>
+      <li>Well-equipped ambulance with oxygen support</li>
+      <li>Experienced medical staff onboard</li>
+      <li>Fast response time</li>
+      <li>Suitable for emergency and general transport</li>
+    </ul>
+  </section>
+
+  <!-- MAP / LOCATION -->
+  <section class="how-it-works" style="margin-top:28px;">
+    <!-- <h3>Hospital Location</h3>
+    <p>You can find us easily using the map below:</p>
+
+    <div style="width:100%;height:300px;border-radius:14px;overflow:hidden;margin-top:12px;">
+      Replace iframe src with your hospital location -->
+      <!-- <iframe 
+        src="https://www.google.com/maps?q=karnataka&output=embed" 
+        width="100%" 
+        height="100%" 
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy">
+      </iframe> -->
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span id="year5"></span> Basaveshwar Hospital</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year5").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
